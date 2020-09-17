@@ -1,0 +1,22 @@
+﻿@model CRUD.ViewModel.GenreViewModel
+@{
+    ViewBag.Title = "GenreForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Label</h2>
+
+@using (Html.BeginForm("Save", "Genres"))
+{
+    <div class="form-group">
+       @Html.LabelFor(g => g.Name)
+       @Html.TextBoxFor(g => g.Name, new {@class="form-control"})
+       @Html.ValidationMessageFor(g => g.Name)
+    </div>
+    
+    @Html.HiddenFor(m => m.Id)
+    <button class="btn btn-primary" type="submit">Save</button>
+}
+
+
+
