@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CRUD.Models.Customer>
+@{
+    ViewBag.Title = "CustomerList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer List</h2>
+
+@Html.ActionLink("Add Customer", "Add", null, new { @class = "btn btn-primary" })
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Membership Type</th>
+            <th>Is Subscribed</th>
+            <th>Date of Birth</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(customer.FullName, "Edit", new { id = customer.Id })</td>
+            <td>@customer.MembershipType.Name</td>
+            <td>@customer.IsSubscribedToNewsletter</td>
+            <td>
+                @if (customer.Birthday.HasValue)
+                {
+                    @customer.Birthday.Value.ToString("MM/dd/yyyy")
+                }
+            </td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = customer.Id }, new { @class = "btn btn-danger" })</td>
+        </tr>
+    }
+</table>
+
+

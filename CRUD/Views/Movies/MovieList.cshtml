@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CRUD.Models.Movie>
+@{
+    ViewBag.Title = "MovieList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MovieList</h2>
+
+@Html.ActionLink("Add Movie", "Add", null, new { @class = "btn btn-primary" })
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th scope="col">Number in Stock</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(movie.Name, "Edit", new {id = movie.Id})</td>
+            <td>@movie.Genre.Name</td>
+            <td>@movie.NumberInStock</td>
+            <td>@Html.ActionLink("Delete", "Delete", "Movies", new {id = movie.Id}, new {@class = "btn btn-danger"})</td>
+        </tr>
+    }
+</table>

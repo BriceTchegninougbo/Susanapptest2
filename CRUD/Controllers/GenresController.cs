@@ -5,6 +5,7 @@ using CRUD.ViewModel;
 
 namespace CRUD.Controllers
 {
+    [Authorize(Roles = MyConstants.RoleAdmin)]
     public class GenresController : Controller
     {
         private readonly ApplicationDbContext _context;

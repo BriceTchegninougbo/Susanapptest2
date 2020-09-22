@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CRUD.Models.MembershipType>
+@{
+    ViewBag.Title = "MembershipTypeList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MembershipTypeList</h2>
+
+@Html.ActionLink("Add MembershipType", "Add", null, new {@class="btn btn-primary"})
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Discount Rate</th>
+        <th>Duration in Months</th>
+        <th>Sign Up Fee</th>
+        <th></th>
+    </tr>
+    </thead>
+    @foreach (var membershipType in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(membershipType.Name, "Edit", new {id = membershipType.Id})</td>
+            <td>@membershipType.DiscountRate</td>
+            <td>@membershipType.DurationInMonths</td>
+            <td>@membershipType.SignUpFee</td>
+            <td>@Html.ActionLink("Delete", "Delete", 
+                    new {id = membershipType.Id}, new {@class="btn btn-danger"})</td>
+        </tr>
+    }
+</table>
