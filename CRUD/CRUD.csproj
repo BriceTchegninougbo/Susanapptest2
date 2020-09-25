@@ -181,13 +181,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\GenresController.cs" />
+    <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MembershipTypesController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RentPortalController.cs" />
     <Compile Include="Enums\SignUpFee.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,6 +224,14 @@
     <Compile Include="Migrations\202009190156234_Create_Customer_Table.Designer.cs">
       <DependentUpon>202009190156234_Create_Customer_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009240145562_Create_Rentals_Table.cs" />
+    <Compile Include="Migrations\202009240145562_Create_Rentals_Table.Designer.cs">
+      <DependentUpon>202009240145562_Create_Rentals_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009242031579_Add_NumberAvailable_Column.cs" />
+    <Compile Include="Migrations\202009242031579_Add_NumberAvailable_Column.Designer.cs">
+      <DependentUpon>202009242031579_Add_NumberAvailable_Column.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -232,6 +244,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MyConstants.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\VerifyCodeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -239,6 +252,7 @@
     <Compile Include="ViewModel\GenreViewModel.cs" />
     <Compile Include="ViewModel\MembershipTypeViewModel.cs" />
     <Compile Include="ViewModel\MovieViewModel.cs" />
+    <Compile Include="ViewModel\NewRentalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -286,10 +300,13 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -305,6 +322,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -348,6 +369,7 @@
     <Content Include="Views\MembershipTypes\MembershipTypeForm.cshtml" />
     <Content Include="Views\Customers\CustomerList.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\RentPortal\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,6 +408,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009190156234_Create_Customer_Table.resx">
       <DependentUpon>202009190156234_Create_Customer_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009240145562_Create_Rentals_Table.resx">
+      <DependentUpon>202009240145562_Create_Rentals_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009242031579_Add_NumberAvailable_Column.resx">
+      <DependentUpon>202009242031579_Add_NumberAvailable_Column.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

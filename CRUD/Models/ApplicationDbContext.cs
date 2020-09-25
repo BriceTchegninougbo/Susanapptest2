@@ -18,6 +18,8 @@ namespace CRUD.Models
 
         public DbSet<Customer> Customers { get; set; }
 
+        public DbSet<Rental> Rentals { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
