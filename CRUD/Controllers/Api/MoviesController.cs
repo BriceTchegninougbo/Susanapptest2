@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using CRUD.Models;
 
@@ -22,7 +17,7 @@ namespace CRUD.Controllers.Api
         // GET/api/movies
         public IHttpActionResult GetMovies(string query = null)
         {
-            var moviesQuery = _context.Movies.Include(m => m.Genre);
+            var moviesQuery = _context.Movies.Include(m => m.Genre).Where(m => m.NumberAvailable > 0);
 
             if (!string.IsNullOrWhiteSpace(query))
                 moviesQuery = _context.Movies.Where(m => m.Name.Contains(query));

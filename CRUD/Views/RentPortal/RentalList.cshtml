@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CRUD.Models.Rental>
+@{
+    ViewBag.Title = "RentalList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rental List</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Customer Name</th>
+        <th>Movie Name</th>
+        <th>Date Rented</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var rental in Model)
+    {
+        <tr>
+            <td>@rental.Customer.FullName</td>
+            <td>@rental.Movie.Name</td>
+            <td>@rental.DateRented</td>
+        </tr>
+    }
+    </tbody>
+</table>
+

@@ -12,6 +12,7 @@ namespace CRUD
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui-1.12.1.min.js",
                         "~/Scripts/bootstrap.js",
+                        "~/scripts/toastr.js",
                         "~/scripts/typeahead.bundle.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -26,6 +27,7 @@ namespace CRUD
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/content/themes/base/jquery-ui.min.css",
+                      "~/content/toastr.css",
                       "~/content/typeahead.css"));
         }
     }
